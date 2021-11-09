@@ -1,0 +1,39 @@
+$langages: HTML5, CSS3, JAVA, React;
+
+@function background($background-color) {
+  @if ($background-color != "white") {
+    @return white;
+  } @else {
+    @return black;
+  }
+}
+
+@function fun1($list) {
+  @return nth($list, 1);
+}
+@function fun2($list) {
+  @return nth($list, length($list));
+}
+
+.langage {
+  content: fun2($langages);
+}
+.text {
+  color: background(white);
+  font-size: 20px;
+}
+
+textarea {
+  @extend .text;
+}
+h1 {
+  @extend .text;
+}
+
+@mixin border-mixin($color, $width) {
+  border: solid $width $color;
+}
+
+.btn {
+  @include border-mixin(yellow, 2px);
+}
